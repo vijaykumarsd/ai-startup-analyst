@@ -1,0 +1,294 @@
+/* Design inspired by lvxventures.com */
+:root {
+  --background-dark: #1a1a2e; /* Deep dark background */
+  --surface-dark: #20203a; /* Slightly lighter dark for cards/surfaces */
+  --primary-accent: #0099ff; /* Vibrant blue for primary actions and accents */
+  --primary-accent-dark: #0077cc; /* Darker blue for hover */
+  --text-light: #e0e0e0; /* Light gray for primary text */
+  --text-muted: #a0a0c0; /* Muted light gray for secondary text */
+  --border-subtle: rgba(255, 255, 255, 0.1); /* Subtle white border */
+  --input-bg: rgba(255, 255, 255, 0.08); /* Input background */
+  --input-border-focus: var(--primary-accent);
+  --success-color: #28a745; /* Green */
+  --error-color: #dc3545; /* Red */
+  --info-color: #17a2b8; /* Cyan */
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Clean, modern sans-serif font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  background-color: var(--surface-dark);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Deeper shadow for dark theme */
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+}
+
+.App-header h1 {
+  font-size: 2.8em;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* DocumentUploader specific styles */
+.document-uploader-container {
+  margin-top: 30px;
+  padding: 30px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05); /* Slightly transparent for depth */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.document-uploader-container h2 {
+  font-size: 2em;
+  color: var(--text-light);
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  color: var(--text-muted);
+}
+
+.text-input {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px 10px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-light);
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.3); /* Focus glow */
+}
+
+.file-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px; /* Add some space above file input */
+  margin-bottom: 25px;
+}
+
+/* Hidden file input */
+.file-input-wrapper input[type=file] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Custom Button Styles */
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 25px;
+  border: 1px solid transparent;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.custom-button:hover:not(:disabled) {
+  transform: translateY(-2px); /* Subtle lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Primary Action Button */
+.btn-primary {
+  background-color: var(--primary-accent);
+  border-color: var(--primary-accent);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-accent-dark);
+  border-color: var(--primary-accent-dark);
+}
+
+/* Secondary/Outline Button (for file input) */
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-accent);
+  border-color: var(--primary-accent);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--primary-accent);
+  color: white;
+}
+
+.status-message {
+  margin-top: 25px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 0.95em;
+  font-weight: 500;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+}
+
+.status-message.success {
+  color: var(--success-color);
+  border-color: var(--success-color);
+  background-color: rgba(40, 167, 69, 0.15);
+}
+
+.status-message.error {
+  color: var(--error-color);
+  border-color: var(--error-color);
+  background-color: rgba(220, 53, 69, 0.15);
+}
+
+.status-message.info {
+  color: var(--info-color);
+  border-color: var(--info-color);
+  background-color: rgba(23, 162, 184, 0.15);
+}
+
+.selected-file-name {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-left-color: var(--primary-accent);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .App {
+    padding: 25px;
+  }
+
+  .App-header h1 {
+    font-size: 2.2em;
+  }
+
+  .document-uploader-container h2 {
+    font-size: 1.6em;
+  }
+
+  .custom-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .text-input {
+    width: calc(100% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 20px;
+  }
+
+  .App-header h1 {
+    font-size: 1.8em;
+  }
+
+  .document-uploader-container h2 {
+    font-size: 1.4em;
+  }
+
+  .file-input-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-button {
+    width: 100%;
+    max-width: 250px; /* Limit width on small screens */
+  }
+
+  .text-input {
+    width: calc(100% - 20px);
+  }
+}

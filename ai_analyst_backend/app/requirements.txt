@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+google-cloud-storage
+google-cloud-vision
+google-cloud-aiplatform
+google-cloud-bigquery
+python-multipart
